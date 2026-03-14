@@ -8,7 +8,7 @@ Este repositorio será utilizado para el desarrollo progresivo del sistema duran
 
 ---
 
-# 📖 Descripción del programa
+## 📖 Descripción del programa
 
 El programa solicita al usuario la cantidad de productos que desea registrar.
 Posteriormente, para cada producto se solicita la siguiente información:
@@ -28,16 +28,17 @@ Cada producto se almacena dentro de una lista llamada **inventario**, utilizando
 Finalmente, el programa muestra el inventario completo en la consola.
 
 ---
-# Diagrama de Flujo
+## Diagrama de Flujo
 
 El siguiente diagrama representa el flujo del programa de inventario.
 
 <p align="center">
   <img src="docs\diagrama_flujo_inventario.drawio.png" width="600">
 </p>
+
 ---
 
-# ⚙️ Funcionalidades actuales
+## ⚙️ Funcionalidades actuales
 
 El programa actualmente permite:
 
@@ -49,7 +50,7 @@ El programa actualmente permite:
 
 ---
 
-# 🧠 Estructura de datos utilizada
+## 🧠 Estructura de datos utilizada
 
 Cada producto se almacena con la siguiente estructura:
 
@@ -70,7 +71,7 @@ inventario = []
 
 ---
 
-# 💻 Ejemplo de ejecución
+## 💻 Ejemplo de ejecución
 
 Ejemplo de interacción con el programa:
 
@@ -102,7 +103,7 @@ costo total: 4000$
 
 ---
 
-# 📋 Requisitos
+## 📋 Requisitos
 
 Para ejecutar el programa es necesario tener instalado:
 
@@ -116,7 +117,7 @@ python --version
 
 ---
 
-# 🚀 Cómo ejecutar el programa
+## 🚀 Cómo ejecutar el programa
 
 1. Clonar el repositorio
 
@@ -138,7 +139,7 @@ python inventario.py
 
 ---
 
-# 📁 Estructura del proyecto
+## 📁 Estructura del proyecto
 
 ```
 inventario_riwi/
@@ -152,7 +153,7 @@ inventario_riwi/
 
 ---
 
-# 📈 Mejoras futuras
+## 📈 Mejoras futuras
 
 Durante el desarrollo del proyecto se planea agregar nuevas funcionalidades como:
 
@@ -164,9 +165,9 @@ Durante el desarrollo del proyecto se planea agregar nuevas funcionalidades como
 
 ---
 
-# 👨‍💻 Autor
+## 👨‍💻 Autor
 
-**Juan Andres Henriquez**
-Coder Riwi 
-Clan: cortissoz
+**Juan Andres Henriquez Coder Riwi**
+
+**Clan: cortissoz**
 
