@@ -1,6 +1,57 @@
 # inicializa la lista del inventario
 inventario = []
 
+def validacion_int(numero):
+    try:
+        
+        numero=int(numero)
+        
+        if numero> 0:
+            
+            print(f"esta todo bien {type(numero)}: {numero} ")
+            
+        else:
+            
+            print("los valores deben ser mayor a 0")
+            
+    except ValueError as error:
+        
+        print(f"Errores {error} ")
+        
+
+def validacion_float(numero):
+    try:
+        numero=float(numero)
+        
+        if numero> 0:
+            
+            print(f"esta todo bien {type(numero)}: {numero} ")
+            
+        else:
+            
+            print("los valores deben ser mayor a 0")
+            
+    except ValueError as error:
+        
+        print(f"Errores {error} ")
+
+
+def validacion_string(texto):
+    try:
+        texto=str(texto).strip()
+        
+        if texto != "":
+            
+            print(f"esta todo bien {type(texto)}: {texto} ")
+            
+        else:
+            
+            print("los valores no pueden ser vacios")
+
+    except ValueError as error:
+        
+        print(f"Valor incorrecto  {error} ")
+
 # petición de cantidad de productos
 while True:
     cantidad_productos = input("Ingresa la cantidad de productos: ")
