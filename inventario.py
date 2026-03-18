@@ -1,5 +1,21 @@
 # inicializa la lista del inventario
 inventario = []
+validacion_resultado=False
+
+def peticion_datos(mensaje,funcion_validadora,validador):
+    
+    while validador==False:
+        valor = input(mensaje)
+        
+        if funcion_validadora(valor):
+            
+            if funcion_validadora==validacion_int:
+                return int(valor)
+            
+            if funcion_validadora==validacion_float:
+                return float(valor)
+                
+            return valor.strip()
 
 def validacion_int(numero):
     try:
@@ -8,16 +24,17 @@ def validacion_int(numero):
         
         if numero> 0:
             
-            print(f"esta todo bien {type(numero)}: {numero} ")
+            return True
             
         else:
             
-            print("los valores deben ser mayor a 0")
+            print("\033[31mLos valores deben ser mayor a 0 \033[0m\n")
+            return False
             
-    except ValueError as error:
+    except ValueError:
         
-        print(f"Errores {error} ")
-        
+        print("\033[31m------ Valor incorrecto ------\033[0m\n")
+        return False
 
 def validacion_float(numero):
     try:
@@ -25,16 +42,17 @@ def validacion_float(numero):
         
         if numero> 0:
             
-            print(f"esta todo bien {type(numero)}: {numero} ")
+            return True
             
         else:
             
-            print("los valores deben ser mayor a 0")
-            
-    except ValueError as error:
-        
-        print(f"Errores {error} ")
+            print("\033[31mLos valores deben ser mayor a 0 \033[0m\n")
+            return False
 
+    except ValueError:
+        
+        print("\033[31m------ Valor incorrecto ------\033[0m\n")
+        return False
 
 def validacion_string(texto):
     try:
@@ -42,31 +60,30 @@ def validacion_string(texto):
         
         if texto != "":
             
-            print(f"esta todo bien {type(texto)}: {texto} ")
+            return True
             
         else:
             
-            print("los valores no pueden ser vacios")
+            print("\033[31mLos valores no pueden ser vacios\033[0m\n")
+            return False
 
-    except ValueError as error:
+    except ValueError:
         
-        print(f"Valor incorrecto  {error} ")
+        print("\033[31m------ Valor incorrecto ------\033[0m\n")
+        return False
+
+
+
+
 
 # petición de cantidad de productos
-while True:
-    cantidad_productos = input("Ingresa la cantidad de productos: ")
-
-    if cantidad_productos.isdigit():
-        cantidad_productos = int(cantidad_productos)
-        break
-    else:
-        print("\033[31m------ Valor incorrecto ------\033[0m\n")
-
+    
+cantidad_productos = peticion_datos("Ingresa la cantidad de productos que vas a agregar: ", validacion_int,validacion_resultado)
 
 # registro de productos
 for i in range(cantidad_productos):
 
-    while True:
+    while validacion_resultado==False:
 
         print(f"\n------------ Producto {i+1} ------------")
 
