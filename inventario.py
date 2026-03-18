@@ -2,9 +2,9 @@
 inventario = []
 validacion_resultado=False
 
-def peticion_datos(mensaje,funcion_validadora,validador):
+def peticion_datos(mensaje,funcion_validadora):
     
-    while validador==False:
+    while True:
         valor = input(mensaje)
         
         if funcion_validadora(valor):
@@ -73,47 +73,27 @@ def validacion_string(texto):
         return False
 
 
-
-
-
 # petición de cantidad de productos
-    
-cantidad_productos = peticion_datos("Ingresa la cantidad de productos que vas a agregar: ", validacion_int,validacion_resultado)
+cantidad_productos = peticion_datos("Ingresa la cantidad de productos que vas a agregar: ", validacion_int)
 
 # registro de productos
 for i in range(cantidad_productos):
-
-    while validacion_resultado==False:
-
-        print(f"\n------------ Producto {i+1} ------------")
-
-        nombre = input("Ingresa nombre del producto: ")
-        precio = input("Ingresa el precio del producto: ")
-        cantidad = input("Ingrese la cantidad del producto: ")
-
-        # validación de datos
-        if nombre.isalpha() and precio.isdigit() and cantidad.isdigit():
-
-            precio = float(precio)
-            cantidad = int(cantidad)
-
-            if precio > 0 and cantidad > 0:
-
-                print("\033[32mDatos ingresados correctamente\033[0m\n")
-
-                # crear diccionario del producto
-                producto = {
-                    "nombre": nombre,
-                    "precio": precio,
-                    "cantidad": cantidad,
-                    "costo_total": precio * cantidad
-                }
-
-                break
-
-        else:
-            print("\033[31m------ Tipo de valores incorrectos ------\033[0m\n")
-
+    
+    print(f"\n------------ Producto {i+1} ------------")
+    
+    # peticion y validación de datos
+    nombre=peticion_datos("Ingresa nombre del producto: ", validacion_string)
+    precio= peticion_datos("Ingresa el precio del producto: ", validacion_float)
+    cantidad=peticion_datos("Ingrese la cantidad del producto: ", validacion_int)
+    
+    # crear diccionario del producto
+    producto = {
+        "nombre": nombre,
+        "precio": precio,
+        "cantidad": cantidad,
+        "costo_total": precio * cantidad
+    }
+    
     # agregar producto al inventario
     inventario.append(producto)
 
@@ -123,12 +103,11 @@ print("\n===== INVENTARIO =====\n")
 
 for i, producto in enumerate(inventario):
 
-    print(f"------ Producto {i+1} ------")
+    print(f"------ Producto {producto['nombre']} ------")
 
-    print(f"{producto['nombre']}: {producto['precio']}$")
+    print(f"Precio: {producto['precio']}$")
     print(f"Cantidad: {producto['cantidad']}")
     print(f"Costo total: {producto['costo_total']}$\n")
-
 
 # --------------------------------------------------
 # Este programa permite registrar varios productos,
