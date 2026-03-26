@@ -1,5 +1,3 @@
-# Lista global donde se almacenan los productos del inventario
-inventario = []
 
 # Función genérica para solicitar datos al usuario con validación
 def peticion_datos(mensaje, funcion_validadora):
@@ -21,6 +19,7 @@ def peticion_datos(mensaje, funcion_validadora):
             # Para strings se limpia espacios
             return valor.strip()
 
+# -----------------VALIDACIONES-----------------
 
 # Validación para números enteros positivos
 def validacion_int(numero):
@@ -69,9 +68,10 @@ def validacion_string(texto):
         print("\033[31m------ Valor incorrecto ------\033[0m\n")
         return False
 
+#-----------------FUNCIONES-----------------
 
 # Función para agregar un producto al inventario
-def agregar_producto(nombre, precio, cantidad):
+def agregar_producto(inventario,nombre, precio, cantidad):
     
     # Se crea el diccionario del producto
     producto = {
@@ -104,6 +104,20 @@ def mostar_inventario(inventario):
         print(f"Cantidad: {producto['cantidad']}")
         print(f"Costo total: {producto['costo_total']}$\n")
 
+#Funcion para buscar 
+def buscar_producto(inventario):
+    try:
+
+        for producto in inventario:
+
+            producto_buscar=input("ingresa el nombre a buscar: ")
+
+            if producto_buscar.lower() == producto["nombre"].lower():
+
+                print("si se encuentra")
+                print(producto)
+    except:
+        print("producto no encontrado")
 
 # Función para calcular estadísticas del inventario
 def calcular_estadisticas(inventario):
@@ -130,61 +144,3 @@ def calcular_estadisticas(inventario):
     print(f"Valor total del inventario: ${valor_total:.2f}\n")
 
 
-# Función principal que controla el menú interactivo
-def menu():
-    
-    # Bucle infinito hasta que el usuario decida salir
-    while True:
-        print("\n===== MENÚ INVENTARIO =====")
-        print("1. Agregar producto")
-        print("2. Mostrar inventario")
-        print("3. Calcular estadísticas")
-        print("4. Salir")
-
-        # Captura de opción
-        opcion = input("Seleccione una opción: ").strip()
-
-        # Estructura de control usando match-case (Python 3.10+)
-        match opcion:
-
-            # Opción 1: agregar producto
-            case "1":
-                print("\n--- Agregar Producto ---")
-                
-                nombre = peticion_datos("Ingresa nombre del producto: ", validacion_string)
-                precio = peticion_datos("Ingresa el precio del producto: ", validacion_float)
-                cantidad = peticion_datos("Ingrese la cantidad del producto: ", validacion_int)
-                
-                agregar_producto(nombre, precio, cantidad)
-                print("\033[32mProducto agregado correctamente\033[0m\n")
-
-            # Opción 2: mostrar inventario
-            case "2":
-                mostar_inventario(inventario)
-
-            # Opción 3: calcular estadísticas
-            case "3":
-                calcular_estadisticas(inventario)
-
-            # Opción 4: salir del programa
-            case "4":
-                print("\nSaliendo del sistema... 👋")
-                break
-
-            # Manejo de opción inválida
-            case _:
-                print("\033[31mOpción inválida, intenta nuevamente\033[0m\n")
-
-
-# Punto de entrada del programa
-menu()
-
-
-# --------------------------------------------------
-# Este programa permite:
-# - Registrar productos en un inventario
-# - Validar datos ingresados por el usuario
-# - Mostrar los productos almacenados
-# - Calcular estadísticas básicas del inventario
-# Utiliza estructuras de control, listas y diccionarios.
-# --------------------------------------------------
